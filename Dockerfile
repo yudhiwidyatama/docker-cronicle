@@ -16,16 +16,16 @@ RUN        apk add --no-cache git curl wget perl bash perl-pathtools tar \
              procps tini
 
 RUN        adduser cronicle -D -h /opt/cronicle
-
+COPY       Cronicle-0.8.62/* /opt/cronicle/
+RUN	   chown -R cronicle:root /opt/croncile/
 USER       cronicle
 
 WORKDIR    /opt/cronicle/
 
 RUN        mkdir -p data logs plugins
 
-COPY Cronicle-0.8.62/* /opt/cronicle/
 
-RUN        chown -R cronicle:root /opt/cronicle && npm install && \
+RUN        npm install && \
            node bin/build.js dist
 
 ADD        entrypoint.sh /entrypoint.sh
