@@ -23,9 +23,9 @@ WORKDIR    /opt/cronicle/
 
 RUN        mkdir -p data logs plugins
 
-COPY --chown=cronicle:root Cronicle-0.8.62/* /opt/cronicle/
+COPY Cronicle-0.8.62/* /opt/cronicle/
 
-RUN        npm install && \
+RUN        chown -R cronicle:root /opt/cronicle && npm install && \
            node bin/build.js dist
 
 ADD        entrypoint.sh /entrypoint.sh
