@@ -16,7 +16,7 @@ RUN        apk add --no-cache git curl wget perl bash perl-pathtools tar \
              procps tini
 
 RUN        adduser cronicle -D -h /opt/cronicle
-COPY       Cronicle-0.8.62/* /opt/cronicle/
+COPY       Cronicle-0.8.62/ /opt/cronicle/
 RUN	   chown -R cronicle:root /opt/cronicle/
 USER       cronicle
 
